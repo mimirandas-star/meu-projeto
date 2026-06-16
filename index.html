@@ -1,153 +1,1002 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="MJTB Labs — Consultoria em dados, Martech e inteligência organizacional. Michele Miranda, Head of Martech & Data com +15 anos transformando dados em decisões estratégicas.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="MJTB Labs — Do dado à decisão.">
+<meta property="og:description" content="Consultoria especializada em dados, Martech e inteligência organizacional.">
+<meta property="og:type" content="website">
+<title>MJTB Labs — Do dado à decisão.</title>
 
-<title>MJTB Labs</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
+/* === TOKENS === */
+:root {
+  --ebano:   #1C1712;
+  --terra:   #7A6A4F;
+  --areia:   #A0916F;
+  --creme:   #E8DFC8;
+  --marfim:  #F5F0E8;
+  --corpo:   #5A4E3A;
+  --escuro:  #2E2720;
+}
+
+/* === RESET === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
 
 body {
-  margin: 0;
+  font-family: 'Inter', Calibri, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  background: var(--marfim);
+  color: var(--corpo);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Skip link acessibilidade */
+.skip-link {
+  position: absolute;
+  top: -999px;
+  left: 16px;
+  background: var(--ebano);
+  color: var(--creme);
+  padding: 8px 16px;
+  font-size: 13px;
+  z-index: 9999;
+  text-decoration: none;
+}
+.skip-link:focus { top: 16px; }
+
+/* === TIPOGRAFIA === */
+.font-display {
+  font-family: 'Cormorant Garamond', Garamond, serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Cormorant Garamond', Garamond, serif;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+/* === NAV === */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--ebano);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 60px;
+  height: 64px;
+  border-bottom: 0.5px solid var(--escuro);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.nav-brand .mjtb {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--creme);
+  letter-spacing: 1px;
+}
+
+.nav-brand .labs {
   font-family: 'Inter', sans-serif;
-  background: #F5F0E8;
-  color: #1C1712;
+  font-size: 9px;
+  font-weight: 400;
+  color: var(--areia);
+  letter-spacing: 4px;
+  text-transform: uppercase;
 }
 
-h1 {
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 11px;
   letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--areia);
+  text-decoration: none;
+  transition: color 0.2s;
 }
 
-h2 {
-  font-family: 'Cormorant Garamond';
+.nav-links a:hover,
+.nav-links a:focus {
+  color: var(--creme);
+  outline: none;
+}
+
+/* === HERO === */
+.hero {
+  min-height: 100vh;
+  background: var(--ebano);
+  display: flex;
+  align-items: center;
+  padding: 120px 60px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  right: -80px; top: 50%;
+  transform: translateY(-50%);
+  width: 560px; height: 560px;
+  border-radius: 50%;
+  border: 0.5px solid var(--escuro);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  right: 60px; top: 50%;
+  transform: translateY(-50%);
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  border: 0.5px solid var(--escuro);
+  pointer-events: none;
+}
+
+.hero-content {
+  max-width: 740px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--areia);
+  margin-bottom: 24px;
+  display: block;
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 5vw, 4rem);
+  color: var(--creme);
   font-weight: 300;
   margin-bottom: 20px;
 }
 
-h3 {
-  margin-bottom: 10px;
+.hero-divider {
+  width: 48px;
+  height: 0.5px;
+  background: var(--areia);
+  margin: 28px 0;
 }
 
-.navbar {
+.hero-sub {
+  font-size: 15px;
+  color: var(--areia);
+  max-width: 480px;
+  line-height: 1.8;
+  margin-bottom: 44px;
+}
+
+.hero-ctas {
   display: flex;
-  justify-content: space-between;
-  padding: 24px 60px;
-  background: #1C1712;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
-.navbar h2 {
-  font-family: 'Cormorant Garamond';
-  color: #E8DFC8;
-}
-
-.navbar a {
-  color: #A0916F;
+.btn-primary {
+  display: inline-block;
+  padding: 13px 28px;
+  background: var(--areia);
+  color: var(--ebano);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
   text-decoration: none;
-  margin-left: 24px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
 }
 
-.hero {
+.btn-primary:hover,
+.btn-primary:focus {
+  background: var(--creme);
+  outline: none;
+}
+
+.btn-outline {
+  display: inline-block;
+  padding: 13px 28px;
+  border: 0.5px solid var(--areia);
+  color: var(--areia);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.btn-outline:hover,
+.btn-outline:focus {
+  border-color: var(--creme);
+  color: var(--creme);
+  outline: none;
+}
+
+/* === NUMBERS BAR === */
+.numbers {
+  background: var(--creme);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 0.5px solid var(--areia);
+}
+
+.number-item {
+  padding: 36px 40px;
+  border-right: 0.5px solid var(--areia);
   text-align: center;
-  padding: 120px 20px;
 }
 
-.hero h1 {
-  font-family: 'Cormorant Garamond';
-  font-size: 3rem;
+.number-item:last-child { border-right: none; }
+
+.number-stat {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
   font-weight: 300;
+  color: var(--ebano);
+  display: block;
+  line-height: 1;
 }
 
-.hero p {
-  color: #7A6A4F;
+.number-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-top: 8px;
+  display: block;
 }
 
-
+/* === SECTIONS === */
 .section {
-  padding: 60px 80px;
+  padding: 96px 60px;
   max-width: 1100px;
   margin: 0 auto;
 }
 
+.section-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--terra);
+  display: block;
+  margin-bottom: 12px;
+}
 
-.grid {
+.section-title {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  color: var(--ebano);
+  font-weight: 300;
+  margin-bottom: 16px;
+}
+
+.section-divider {
+  width: 40px;
+  height: 0.5px;
+  background: var(--areia);
+  margin-bottom: 36px;
+}
+
+/* === SOBRE / PERFIL === */
+.sobre-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.sobre-bio {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--corpo);
+}
+
+.sobre-bio p + p { margin-top: 16px; }
+
+.sobre-highlights {
   display: flex;
-  gap: 20px;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.highlight-item {
+  padding: 20px 24px;
+  background: white;
+  border-left: 2px solid var(--areia);
+}
+
+.highlight-item strong {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--ebano);
+  margin-bottom: 4px;
+}
+
+.highlight-item span {
+  font-size: 12px;
+  color: var(--terra);
+  letter-spacing: 0.5px;
+}
+
+/* === EXPERIÊNCIA === */
+.exp-section {
+  background: var(--ebano);
+  padding: 96px 0;
+}
+
+.exp-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 60px;
+}
+
+.exp-section .section-label { color: var(--areia); }
+.exp-section .section-title { color: var(--creme); }
+.exp-section .section-divider { background: var(--areia); }
+
+.exp-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 48px;
+}
+
+.exp-item {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 40px;
+  padding: 32px 0;
+  border-top: 0.5px solid var(--escuro);
+  position: relative;
+}
+
+.exp-item:last-child { border-bottom: 0.5px solid var(--escuro); }
+
+.exp-meta { }
+
+.exp-period {
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--areia);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.exp-company {
+  font-size: 12px;
+  color: var(--areia);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+}
+
+.exp-body {}
+
+.exp-role {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--creme);
+  margin-bottom: 12px;
+}
+
+.exp-desc {
+  font-size: 13px;
+  color: var(--areia);
+  line-height: 1.8;
+  max-width: 600px;
+}
+
+.exp-tags {
+  display: flex;
   flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
 }
 
-.card {
-  border: 1px solid #A0916F;
-  padding: 25px;
-  background: white;
-  flex: 1;
+.tag {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--areia);
+  border: 0.5px solid var(--escuro);
+  padding: 4px 10px;
 }
 
-footer {
-  background: #1C1712;
-  color: #A0916F;
+/* === SOLUÇÕES === */
+.solucoes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--areia);
+  border: 0.5px solid var(--areia);
+  margin-top: 48px;
+}
+
+.sol-card {
+  background: var(--marfim);
+  padding: 36px 32px;
+  transition: background 0.25s;
+}
+
+.sol-card:hover { background: white; }
+
+.sol-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--creme);
+  display: block;
+  margin-bottom: 20px;
+}
+
+.sol-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--ebano);
+  margin-bottom: 12px;
+}
+
+.sol-desc {
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--corpo);
+}
+
+/* === COMPETÊNCIAS === */
+.comp-section {
+  background: var(--creme);
+}
+
+.comp-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  margin-top: 48px;
+}
+
+.comp-group {}
+
+.comp-group-title {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.comp-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.comp-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--corpo);
+}
+
+.comp-list li::before {
+  content: '→';
+  color: var(--areia);
+  flex-shrink: 0;
+}
+
+/* === CTA SECTION === */
+.cta-section {
+  background: var(--ebano);
+  padding: 96px 60px;
   text-align: center;
-  padding: 30px;
 }
 
-.card {
-  border: 1px solid #A0916F;
-  padding: 25px;
-  background: white;
-  flex: 1;
+.cta-section .section-label { color: var(--areia); text-align: center; }
+.cta-section .section-title { color: var(--creme); text-align: center; }
+.cta-section .section-divider { margin: 20px auto 36px; }
+
+.cta-sub {
+  font-size: 15px;
+  color: var(--areia);
+  margin-bottom: 44px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+}
+
+.cta-contacts {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 48px;
+  padding-top: 40px;
+  border-top: 0.5px solid var(--escuro);
+}
+
+.cta-contact-item {
+  text-align: center;
+}
+
+.cta-contact-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--areia);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.cta-contact-value {
+  font-size: 13px;
+  color: var(--creme);
   text-decoration: none;
-  color: #1C1712;
-  transition: 0.3s;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  background: #F5F0E8;
+.cta-contact-value:hover { color: var(--areia); }
+
+/* === FOOTER === */
+footer {
+  background: var(--escuro);
+  padding: 32px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 0.5px solid var(--ebano);
 }
 
+.footer-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  color: var(--creme);
+}
+
+.footer-info {
+  font-size: 11px;
+  color: var(--areia);
+  text-align: right;
+  line-height: 1.8;
+}
+
+.footer-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--terra);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+  nav { padding: 0 24px; }
+  .nav-links { gap: 20px; }
+
+  .hero { padding: 100px 24px 60px; }
+  .hero::before, .hero::after { display: none; }
+
+  .section { padding: 64px 24px; }
+  .exp-inner { padding: 0 24px; }
+  .cta-section { padding: 64px 24px; }
+
+  .numbers { grid-template-columns: repeat(2, 1fr); }
+  .number-item { border-bottom: 0.5px solid var(--areia); }
+
+  .sobre-grid { grid-template-columns: 1fr; gap: 40px; }
+  .exp-item { grid-template-columns: 1fr; gap: 8px; }
+  .solucoes-grid { grid-template-columns: 1fr; }
+  .comp-grid { grid-template-columns: 1fr; gap: 32px; }
+
+  .footer { flex-direction: column; gap: 16px; text-align: center; }
+  .footer-info { text-align: center; }
+}
+
+@media (max-width: 600px) {
+  .nav-links { display: none; }
+  .hero h1 { font-size: 2rem; }
+  .numbers { grid-template-columns: 1fr 1fr; }
+  .cta-contacts { flex-direction: column; gap: 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; }
+  html { scroll-behavior: auto; }
+}
 </style>
-
 </head>
 
 <body>
 
-<header class="navbar">
-  <h2>MJTB Labs</h2>
-  <nav>
-    #solutionsSoluções</a>
-    #casesCases</a>
-  </nav>
-</header>
+<a href="#main" class="skip-link">Ir ao conteúdo principal</a>
 
-<section class="hero">
-    
-  <h1>Arquitetura de Inteligência Organizacional</h1>
-  <p>do dado à decisão.</p>
-</section>
+<!-- NAV -->
+<nav aria-label="Navegação principal">
+  <div class="nav-brand" aria-label="MJTB Labs">
+    <span class="mjtb">MJTB</span>
+    <span class="labs" aria-hidden="true">Labs</span>
+  </div>
+  <ul class="nav-links" role="list">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#experiencia">Trajetória</a></li>
+    <li><a href="#solucoes">Soluções</a></li>
+    <li><a href="#competencias">Competências</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
 
-<section class="section" id="solutions">
-  <h2>Soluções</h2>
-
- <div class="grid">  <a href="cases/asa.html" class="card">    <h3>Automação ASA</h3>    <p>Redução de 80% no tempo operacional.</p>  </a></div>
-
-
-    <div class="card">
-      <h3>Sistemas</h3>
-      <p>Desenvolvimento de soluções sob medida.</p>
-    </div>
-
-    <div class="card">
-      <h3>Dados</h3>
-      <p>Transformação de dados em decisões estratégicas.</p>
+<!-- HERO -->
+<main id="main">
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-content">
+    <span class="hero-label">Consultoria em Dados · Martech · Inteligência Organizacional</span>
+    <h1 id="hero-title">Arquitetura de inteligência para decisões que importam.</h1>
+    <div class="hero-divider" aria-hidden="true"></div>
+    <p class="hero-sub">Transformo dados em estratégia, e estratégia em resultado. Especializada em Martech, CDP, CRM e engenharia de dados para organizações de alta complexidade.</p>
+    <div class="hero-ctas">
+      <a href="#solucoes" class="btn-primary">Ver soluções</a>
+      <a href="#contato" class="btn-outline">Fale comigo</a>
     </div>
   </div>
 </section>
+
+<!-- NUMBERS -->
+<section class="numbers" aria-label="Números de carreira">
+  <div class="number-item">
+    <span class="number-stat">+15</span>
+    <span class="number-label">Anos de experiência</span>
+  </div>
+  <div class="number-item">
+    <span class="number-stat">+8</span>
+    <span class="number-label">Empresas de grande porte</span>
+  </div>
+  <div class="number-item">
+    <span class="number-stat">CDP</span>
+    <span class="number-label">Implementações lideradas</span>
+  </div>
+  <div class="number-item">
+    <span class="number-stat">360°</span>
+    <span class="number-label">Visão do cliente</span>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="section" id="sobre" aria-labelledby="sobre-title">
+  <span class="section-label">Fundadora</span>
+  <h2 class="section-title" id="sobre-title">Michele Miranda</h2>
+  <div class="section-divider" aria-hidden="true"></div>
+
+  <div class="sobre-grid">
+    <div class="sobre-bio">
+      <p>Profissional de produto e dados com trajetória sólida na liderança de plataformas Martech e Data em organizações de grande porte — onde múltiplas marcas, alto volume de dados e integração entre marketing, tecnologia e negócio são o desafio diário.</p>
+      <p>Atuo no ponto de convergência entre dados, estratégia e inovação tecnológica. Meu foco é converter dados em inteligência acionável, eficiência operacional e crescimento sustentável — sem jargão, sem atalhos.</p>
+      <p>Atualmente à frente do Hub Integrado de Martech e Engenharia de Dados do Zé Delivery (AB-InBev), onde lidero squads multidisciplinares com arquitetura de CDP, IA, automação de CRM e governança de dados em escala.</p>
+      <p>A MJTB Labs nasce dessa experiência acumulada — para levar essa capacidade estratégica e técnica a empresas que precisam evoluir a maturidade dos seus dados e da sua inteligência organizacional.</p>
+    </div>
+
+    <div class="sobre-highlights" role="list">
+      <div class="highlight-item" role="listitem">
+        <strong>Head of Data & Martech & AI — AB InBev</strong>
+        <span>Liderança do Hub Integrado de CRM, Martech, AI e Data Tracking · 2024–presente</span>
+      </div>
+      <div class="highlight-item" role="listitem">
+        <strong>Group Product Manager — Creditas</strong>
+        <span>Construção da área de Data Products, CDP, MDM e analytics · 2022–2024</span>
+      </div>
+      <div class="highlight-item" role="listitem">
+        <strong>Senior Product Manager — Rede D'Or São Luiz</strong>
+        <span>Produtos digitais, Design System e Growth · 2020–2021</span>
+      </div>
+      <div class="highlight-item" role="listitem">
+        <strong>Group Product Manager — Globosat</strong>
+        <span>CRM, estratégia de dados e produtos digitais do esporte · 2019–2020</span>
+      </div>
+      <div class="highlight-item" role="listitem">
+        <strong>MBA em Marketing — USP · Especialização em Estatística — Ibmec</strong>
+        <span>Formação acadêmica com foco em dados, estratégia e decisão</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIÊNCIA -->
+<section class="exp-section" id="experiencia" aria-labelledby="exp-title">
+  <div class="exp-inner">
+    <span class="section-label">Trajetória</span>
+    <h2 class="section-title" id="exp-title">Onde a experiência foi construída</h2>
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <div class="exp-timeline">
+
+      <article class="exp-item">
+        <div class="exp-meta">
+          <span class="exp-period">2024 — presente</span>
+          <span class="exp-company">AB InBev · Zé Delivery</span>
+        </div>
+        <div class="exp-body">
+          <h3 class="exp-role">Head of Data, Martech & AI</h3>
+          <p class="exp-desc">Liderança do Hub Integrado de CRM, Martech e Dados — unificando CRM, AI e Data Tracking sob uma única governança. Criação da nova arquitetura de Martech, implementação de CDP integrada ao Data Lake e redução de time-to-market de campanha.</p>
+          <div class="exp-tags" role="list" aria-label="Tecnologias e temas">
+            <span class="tag" role="listitem">CDP</span>
+            <span class="tag" role="listitem">Braze</span>
+            <span class="tag" role="listitem">AWS</span>
+            <span class="tag" role="listitem">Azure</span>
+            <span class="tag" role="listitem">Segment</span>
+            <span class="tag" role="listitem">AppsFlyer</span>
+            <span class="tag" role="listitem">GenAI</span>
+            <span class="tag" role="listitem">Data Governance</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="exp-item">
+        <div class="exp-meta">
+          <span class="exp-period">2022 — 2024</span>
+          <span class="exp-company">Creditas</span>
+        </div>
+        <div class="exp-body">
+          <h3 class="exp-role">Group Product Manager — Data Products</h3>
+          <p class="exp-desc">Construção da área de Data Products em ambiente multi-BU. Implementação de Segment.io e Amplitude, desenvolvimento de MDM, data layer e pipelines via API, modelos de propensão e automação de CRM.</p>
+          <div class="exp-tags" role="list" aria-label="Tecnologias e temas">
+            <span class="tag" role="listitem">Segment.io</span>
+            <span class="tag" role="listitem">Amplitude</span>
+            <span class="tag" role="listitem">MDM</span>
+            <span class="tag" role="listitem">API</span>
+            <span class="tag" role="listitem">CRM</span>
+            <span class="tag" role="listitem">Data Products</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="exp-item">
+        <div class="exp-meta">
+          <span class="exp-period">2020 — 2021</span>
+          <span class="exp-company">Rede D'Or São Luiz</span>
+        </div>
+        <div class="exp-body">
+          <h3 class="exp-role">Sênior Product Manager</h3>
+          <p class="exp-desc">Responsável por produtos digitais de agendamento, tele consulta e exames. Criação do Design System, implementação do Mixpanel e estratégia de Growth para área do médico.</p>
+          <div class="exp-tags" role="list" aria-label="Tecnologias e temas">
+            <span class="tag" role="listitem">Mixpanel</span>
+            <span class="tag" role="listitem">Design System</span>
+            <span class="tag" role="listitem">Growth</span>
+            <span class="tag" role="listitem">Telemedicina</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="exp-item">
+        <div class="exp-meta">
+          <span class="exp-period">2019 — 2020</span>
+          <span class="exp-company">Globosat</span>
+        </div>
+        <div class="exp-body">
+          <h3 class="exp-role">Group Product Manager — Esporte</h3>
+          <p class="exp-desc">Estruturação do CRM do esporte (Premiere, Combate, Globo Esporte), criação de réguas omnichannel, estratégia de Growth, tagueamento de produtos digitais e interface técnica com Google e Apple.</p>
+          <div class="exp-tags" role="list" aria-label="Tecnologias e temas">
+            <span class="tag" role="listitem">CRM</span>
+            <span class="tag" role="listitem">DMP</span>
+            <span class="tag" role="listitem">GA4</span>
+            <span class="tag" role="listitem">Streaming</span>
+            <span class="tag" role="listitem">D2C</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="exp-item">
+        <div class="exp-meta">
+          <span class="exp-period">2017 — 2019</span>
+          <span class="exp-company">Oi S.A.</span>
+        </div>
+        <div class="exp-body">
+          <h3 class="exp-role">Group Product Manager — Marketing Digital</h3>
+          <p class="exp-desc">Tribe líder de Marketing Digital. Implementação do ecossistema Oracle (DMP, Responsys, Maxymiser), criação de motor de personalização com modelos estatísticos, réguas omnichannel e governança de dados.</p>
+          <div class="exp-tags" role="list" aria-label="Tecnologias e temas">
+            <span class="tag" role="listitem">Oracle DMP</span>
+            <span class="tag" role="listitem">Responsys</span>
+            <span class="tag" role="listitem">Maxymiser</span>
+            <span class="tag" role="listitem">Personalização</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="exp-item">
+        <div class="exp-meta">
+          <span class="exp-period">2008 — 2016</span>
+          <span class="exp-company">B2W Digital</span>
+        </div>
+        <div class="exp-body">
+          <h3 class="exp-role">Group Product Manager — E-commerce</h3>
+          <p class="exp-desc">Quase 8 anos liderando squads em Americanas, Submarino e Shoptime. Projeto Fusion (integração das marcas B2W), implementação de Teste A/B, Analytics, BI, sistemas de cobrança e integrações com Google, Apple e buscadores.</p>
+          <div class="exp-tags" role="list" aria-label="Tecnologias e temas">
+            <span class="tag" role="listitem">E-commerce</span>
+            <span class="tag" role="listitem">Teste A/B</span>
+            <span class="tag" role="listitem">Google Analytics</span>
+            <span class="tag" role="listitem">BI</span>
+            <span class="tag" role="listitem">Oracle ERP</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- SOLUÇÕES -->
+<section class="section" id="solucoes" aria-labelledby="sol-title">
+  <span class="section-label">O que fazemos</span>
+  <h2 class="section-title" id="sol-title">Soluções</h2>
+  <div class="section-divider" aria-hidden="true"></div>
+
+  <div class="solucoes-grid" role="list">
+
+    <div class="sol-card" role="listitem">
+      <span class="sol-number" aria-hidden="true">01</span>
+      <h3 class="sol-title">Estratégia de Dados & CDP</h3>
+      <p class="sol-desc">Diagnóstico e arquitetura de Customer Data Platforms. Implementação de visão 360° do cliente, MDM, governança e pipelines de dados com foco em personalização e automação em escala.</p>
+    </div>
+
+    <div class="sol-card" role="listitem">
+      <span class="sol-number" aria-hidden="true">02</span>
+      <h3 class="sol-title">Martech & CRM</h3>
+      <p class="sol-desc">Seleção, implementação e integração de stack de Martech. Arquitetura de jornadas omnichannel, réguas de relacionamento, automação de campanhas e modelos de propensão.</p>
+    </div>
+
+    <div class="sol-card" role="listitem">
+      <span class="sol-number" aria-hidden="true">03</span>
+      <h3 class="sol-title">Data Tracking & Analytics</h3>
+      <p class="sol-desc">Estruturação de data layer, taxonomia de eventos e rastreabilidade. Implementação de GA4, GTM, Amplitude, Mixpanel e frameworks de qualidade de dados com uso de IA.</p>
+    </div>
+
+    <div class="sol-card" role="listitem">
+      <span class="sol-number" aria-hidden="true">04</span>
+      <h3 class="sol-title">Governança de Dados</h3>
+      <p class="sol-desc">Definição de processos, políticas e estruturas para garantir qualidade, segurança e uso ético dos dados. Roadmap técnico e alinhamento entre áreas técnicas e executivas.</p>
+    </div>
+
+    <div class="sol-card" role="listitem">
+      <span class="sol-number" aria-hidden="true">05</span>
+      <h3 class="sol-title">IA Aplicada ao Marketing</h3>
+      <p class="sol-desc">Desenvolvimento de modelos de Machine Learning para personalização, retenção e otimização de investimento. Integração de GenAI no fluxo de produto e CRM.</p>
+    </div>
+
+    <div class="sol-card" role="listitem">
+      <span class="sol-number" aria-hidden="true">06</span>
+      <h3 class="sol-title">Mentoria & Advisory</h3>
+      <p class="sol-desc">Aceleração de times de produto e dados. Apoio estratégico a líderes em transição, startups em escala e organizações que querem elevar a maturidade analítica e tecnológica.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- COMPETÊNCIAS -->
+<section class="comp-section" id="competencias" aria-labelledby="comp-title">
+  <div class="section" style="padding-top: 96px; padding-bottom: 96px;">
+    <span class="section-label">Expertise</span>
+    <h2 class="section-title" id="comp-title">Competências</h2>
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <div class="comp-grid">
+      <div class="comp-group">
+        <span class="comp-group-title">Plataformas & Stack</span>
+        <ul class="comp-list" role="list">
+          <li>CDP — Segment, mParticle, Tealium</li>
+          <li>CRM & Automation — Braze, Responsys, Oracle MKT Cloud</li>
+          <li>Analytics — GA4, GTM, Amplitude, Mixpanel, Databricks</li>
+          <li>Cloud — AWS, Azure, BigQuery</li>
+          <li>Data Tracking — AppsFlyer, Firebase, data layer</li>
+        </ul>
+      </div>
+
+      <div class="comp-group">
+        <span class="comp-group-title">Disciplinas</span>
+        <ul class="comp-list" role="list">
+          <li>Martech Strategy & Stack Design</li>
+          <li>Data Engineering — ETL, API, Cloud</li>
+          <li>Machine Learning & GenAI aplicados</li>
+          <li>MDM — Master Data Management</li>
+          <li>Data Governance & Taxonomias</li>
+        </ul>
+      </div>
+
+      <div class="comp-group">
+        <span class="comp-group-title">Liderança & Produto</span>
+        <ul class="comp-list" role="list">
+          <li>Liderança técnica de squads multidisciplinares</li>
+          <li>Product Management — roadmap, backlog, OKRs</li>
+          <li>Alinhamento estratégico executivo</li>
+          <li>Gestão cross-BU e multi-marca</li>
+          <li>Planejamento de médio e longo prazo</li>
+        </ul>
+      </div>
+
+      <div class="comp-group">
+        <span class="comp-group-title">Formação</span>
+        <ul class="comp-list" role="list">
+          <li>MBA Marketing — Universidade de São Paulo</li>
+          <li>Especialização Estatística — Ibmec</li>
+          <li>Certificação Oracle Responsys & Maxymiser</li>
+          <li>Mixpanel Product Analytics Certification</li>
+          <li>Digital Marketing & Growth Hacking</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / CONTATO -->
+<section class="cta-section" id="contato" aria-labelledby="contato-title">
+  <span class="section-label">Vamos conversar</span>
+  <h2 class="section-title" id="contato-title">Do dado à decisão.</h2>
+  <div class="section-divider" aria-hidden="true"></div>
+  <p class="cta-sub">Se você está construindo ou evoluindo sua inteligência de dados e Martech, me conta o desafio. Juntos encontramos o caminho mais inteligente.</p>
+
+  <div class="hero-ctas" style="justify-content: center;">
+    <a href="mailto:michele@mjtblabs.com.br" class="btn-primary">Enviar e-mail</a>
+    <a href="https://www.linkedin.com/in/michelesilveira" target="_blank" rel="noopener noreferrer" class="btn-outline">LinkedIn</a>
+  </div>
+
+  <div class="cta-contacts">
+    <div class="cta-contact-item">
+      <span class="cta-contact-label">E-mail</span>
+      <a href="mailto:michele@mjtblabs.com.br" class="cta-contact-value">michele@mjtblabs.com.br</a>
+    </div>
+    <div class="cta-contact-item">
+      <span class="cta-contact-label">Telefone</span>
+      <a href="tel:+5521983850916" class="cta-contact-value">(21) 98385-0916</a>
+    </div>
+    <div class="cta-contact-item">
+      <span class="cta-contact-label">LinkedIn</span>
+      <a href="https://www.linkedin.com/in/michelesilveira" target="_blank" rel="noopener noreferrer" class="cta-contact-value">linkedin.com/in/michelesilveira</a>
+    </div>
+    <div class="cta-contact-item">
+      <span class="cta-contact-label">Localização</span>
+      <span class="cta-contact-value">São Paulo & Rio de Janeiro · Brasil</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
 <footer>
-  <p>MJTB Labs · do dado à decisão.</p>
+  <div class="footer-brand">MJTB Labs</div>
+  <div style="text-align: center;">
+    <span class="footer-tagline">do dado à decisão.</span>
+  </div>
+  <div class="footer-info">
+    <div>CNPJ 66.142.488/0001-08</div>
+    <div>Michele Miranda da Silveira Consultoria em TI Ltda</div>
+  </div>
 </footer>
 
 </body>
