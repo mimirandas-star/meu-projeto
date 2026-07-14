@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /Backup/
+Disallow: /Privado/
+
+Sitemap: https://mjtblabs.com.br/sitemap.xml

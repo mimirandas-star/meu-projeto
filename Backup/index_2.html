@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Michele Miranda — Executive Builder. 20 anos transformando problemas complexos de dados, produto e tecnologia em soluções escaláveis. Hoje, construindo com AI.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Michele Miranda — Executive Builder">
+<meta property="og:description" content="Dados, Martech, Produto e AI. Como penso, o que construí, o que estou construindo agora.">
+<meta property="og:type" content="website">
+<title>Michele Miranda — Executive Builder</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%231C1712%27/%3E%3Ctext x=%2716%27 y=%2723%27 font-family=%27Georgia,serif%27 font-size=%2720%27 fill=%27%23E8DFC8%27 text-anchor=%27middle%27%3EM%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* === TOKENS === */
+:root {
+  --ebano:   #1C1712;
+  --terra:   #7A6A4F;
+  --areia:   #A0916F;
+  --creme:   #E8DFC8;
+  --marfim:  #F5F0E8;
+  --corpo:   #5A4E3A;
+  --escuro:  #2E2720;
+  --cobre:   #8B6F47;
+}
+
+/* === RESET === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', Calibri, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  background: var(--marfim);
+  color: var(--corpo);
+  -webkit-font-smoothing: antialiased;
+}
+
+.skip-link {
+  position: absolute; top: -999px; left: 16px;
+  background: var(--ebano); color: var(--creme);
+  padding: 8px 16px; font-size: 13px; z-index: 9999; text-decoration: none;
+}
+.skip-link:focus { top: 16px; }
+
+.font-display { font-family: 'Cormorant Garamond', Garamond, serif; }
+.font-mono { font-family: 'JetBrains Mono', 'Courier New', monospace; }
+
+h1, h2, h3 {
+  font-family: 'Cormorant Garamond', Garamond, serif;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+/* === NAV === */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--ebano);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 60px; height: 64px;
+  border-bottom: 0.5px solid var(--escuro);
+}
+.nav-brand { display: flex; align-items: baseline; gap: 8px; text-decoration: none; }
+.nav-brand .nome { font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 400; color: var(--creme); letter-spacing: 0.5px; }
+.nav-brand .papel { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 400; color: var(--areia); letter-spacing: 2px; text-transform: uppercase; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--areia); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a:focus { color: var(--creme); outline: none; }
+
+/* === HERO === */
+.hero {
+  min-height: 100vh; background: var(--ebano);
+  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  align-items: center; gap: 64px;
+  padding: 120px 60px 80px; max-width: 1240px; margin: 0 auto;
+}
+.hero-content { max-width: 640px; }
+.hero-foto { position: relative; justify-self: end; max-width: 380px; width: 100%; }
+.hero-foto img {
+  display: block; width: 100%; height: auto;
+  filter: sepia(0.12) contrast(1.02) saturate(0.92);
+}
+.hero-foto::after {
+  content: ''; position: absolute; inset: 0;
+  transform: translate(14px, 14px);
+  border: 0.5px solid var(--areia);
+  pointer-events: none; z-index: -1;
+}
+.hero-foto figcaption {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--terra);
+  margin-top: 14px;
+}
+.hero-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--areia); margin-bottom: 24px; display: block; }
+.hero h1 { font-size: clamp(2.4rem, 4.6vw, 3.6rem); color: var(--creme); font-weight: 300; margin-bottom: 20px; }
+.hero-divider { width: 48px; height: 0.5px; background: var(--areia); margin: 28px 0; }
+.hero-sub { font-size: 15px; color: var(--areia); max-width: 520px; line-height: 1.8; margin-bottom: 44px; }
+.hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+
+.btn-primary {
+  display: inline-block; padding: 13px 28px; background: var(--areia); color: var(--ebano);
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
+  font-family: 'Inter', sans-serif; font-weight: 500; transition: background 0.2s, color 0.2s;
+}
+.btn-primary:hover, .btn-primary:focus { background: var(--creme); outline: none; }
+.btn-outline {
+  display: inline-block; padding: 13px 28px; border: 0.5px solid var(--areia); color: var(--areia);
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
+  font-family: 'Inter', sans-serif; transition: border-color 0.2s, color 0.2s;
+}
+.btn-outline:hover, .btn-outline:focus { border-color: var(--creme); color: var(--creme); outline: none; }
+
+/* === NUMBERS === */
+.numbers { background: var(--creme); display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 0.5px solid var(--areia); }
+.number-item { padding: 36px 32px; border-right: 0.5px solid var(--areia); text-align: center; }
+.number-item:last-child { border-right: none; }
+.number-stat { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: var(--ebano); display: block; line-height: 1; }
+.number-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--terra); margin-top: 8px; display: block; }
+
+/* === EMPRESAS === */
+.empresas { background: var(--marfim); padding: 28px 60px; border-bottom: 0.5px solid var(--creme); }
+.empresas-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: baseline; gap: 12px 36px; flex-wrap: wrap; justify-content: center; }
+.empresas-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--areia); }
+.empresas-inner span:not(.empresas-label) { font-family: 'Cormorant Garamond', serif; font-size: 17px; color: var(--terra); letter-spacing: 0.5px; white-space: nowrap; }
+
+/* === SECTIONS === */
+.section { padding: 96px 60px; max-width: 1100px; margin: 0 auto; }
+.section-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--terra); display: block; margin-bottom: 12px; }
+.section-title { font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--ebano); font-weight: 300; margin-bottom: 16px; }
+.section-intro { font-size: 14px; color: var(--corpo); max-width: 640px; line-height: 1.8; margin-bottom: 8px; }
+.section-divider { width: 40px; height: 0.5px; background: var(--areia); margin-bottom: 36px; }
+
+/* === SOBRE === */
+.sobre-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 80px; align-items: start; }
+.sobre-bio { font-size: 15px; line-height: 1.85; color: var(--corpo); }
+.sobre-bio p + p { margin-top: 16px; }
+.sobre-highlights { display: flex; flex-direction: column; gap: 24px; }
+.highlight-item { padding: 20px 24px; background: white; border-left: 2px solid var(--areia); }
+.highlight-item strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: 15px; font-weight: 400; color: var(--ebano); margin-bottom: 4px; }
+.highlight-item span { font-size: 12px; color: var(--terra); letter-spacing: 0.3px; }
+
+/* === TIMELINE DE EVOLUÇÃO === */
+.evol-section { background: var(--ebano); padding: 96px 0; }
+.evol-inner { max-width: 780px; margin: 0 auto; padding: 0 60px; }
+.evol-section .section-label { color: var(--areia); }
+.evol-section .section-title { color: var(--creme); }
+.evol-section .section-divider { background: var(--areia); }
+.evol-list { margin-top: 56px; position: relative; }
+.evol-list::before { content: ''; position: absolute; left: 68px; top: 8px; bottom: 8px; width: 0.5px; background: var(--escuro); }
+.evol-item { display: grid; grid-template-columns: 68px 1fr; gap: 32px; padding: 22px 0; position: relative; }
+.evol-year { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--areia); text-align: right; padding-top: 2px; }
+.evol-body { position: relative; padding-left: 24px; }
+.evol-body::before { content: ''; position: absolute; left: -4px; top: 8px; width: 7px; height: 7px; border-radius: 50%; background: var(--areia); }
+.evol-title { font-family: 'Cormorant Garamond', serif; font-size: 19px; color: var(--creme); font-weight: 400; margin-bottom: 4px; }
+.evol-desc { font-size: 13px; color: var(--areia); line-height: 1.7; max-width: 480px; }
+
+/* === CASES === */
+.cases-list { margin-top: 48px; display: flex; flex-direction: column; gap: 1px; background: var(--areia); border: 0.5px solid var(--areia); }
+.case-item { background: var(--marfim); padding: 44px 40px; }
+.case-head { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; flex-wrap: wrap; margin-bottom: 20px; }
+.case-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 400; color: var(--ebano); max-width: 640px; }
+.case-company { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--terra); white-space: nowrap; }
+.case-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 20px; }
+.case-col-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--areia); display: block; margin-bottom: 8px; }
+.case-col p { font-size: 13px; line-height: 1.75; color: var(--corpo); }
+.case-diagram { margin-top: 32px; padding: 28px 24px 20px; background: white; border: 0.5px solid var(--areia); }
+.case-diagram svg { width: 100%; height: auto; display: block; }
+.case-result { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 24px; padding-top: 20px; border-top: 0.5px solid var(--areia); }
+.case-result-stat { font-family: 'Cormorant Garamond', serif; font-size: 26px; color: var(--ebano); font-weight: 400; display: block; }
+.case-result-label { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--terra); }
+
+@media (max-width: 900px) {
+  .case-grid { grid-template-columns: 1fr; gap: 16px; }
+}
+
+/* === COMO PENSO === */
+.pensa-list { margin-top: 40px; }
+.pensa-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; padding: 32px 0; border-top: 0.5px solid var(--areia); align-items: start; }
+.pensa-row:last-child { border-bottom: 0.5px solid var(--areia); }
+.pensa-quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.3rem, 2.2vw, 1.7rem); color: var(--ebano); line-height: 1.35; font-weight: 400; }
+.pensa-desc { font-size: 13.5px; line-height: 1.8; color: var(--corpo); padding-top: 6px; }
+@media (max-width: 900px) { .pensa-row { grid-template-columns: 1fr; gap: 12px; } }
+
+/* === BUILDING IN PUBLIC === */
+.bip-section { background: var(--creme); }
+.bip-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--areia); border: 0.5px solid var(--areia); margin-top: 48px; }
+.bip-card { background: var(--marfim); padding: 32px; display: flex; flex-direction: column; gap: 12px; }
+.bip-card.disabled { opacity: 0.55; }
+.bip-status { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border: 0.5px solid var(--areia); color: var(--terra); align-self: flex-start; }
+.bip-status.ativo { color: var(--ebano); border-color: var(--ebano); }
+.bip-card-title { font-family: 'Cormorant Garamond', serif; font-size: 19px; color: var(--ebano); }
+.bip-card-desc { font-size: 13px; color: var(--corpo); line-height: 1.7; }
+.bip-card-link { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--terra); text-decoration: none; margin-top: auto; }
+.bip-card-link:hover { color: var(--ebano); }
+
+/* === MJTB STRIP === */
+.mjtb-strip { background: var(--ebano); padding: 56px 60px; }
+.mjtb-strip-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap; }
+.mjtb-strip-text { max-width: 560px; }
+.mjtb-strip-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--areia); margin-bottom: 8px; display: block; }
+.mjtb-strip-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--creme); font-weight: 400; margin-bottom: 8px; }
+.mjtb-strip-desc { font-size: 13px; color: var(--areia); line-height: 1.7; }
+
+/* === COMPETÊNCIAS === */
+.comp-section { background: var(--creme); }
+.comp-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; margin-top: 48px; }
+.comp-group-title { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--terra); margin-bottom: 16px; display: block; }
+.comp-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.comp-list li { font-size: 13px; color: var(--corpo); padding-left: 16px; position: relative; }
+.comp-list li::before { content: '—'; position: absolute; left: 0; color: var(--areia); }
+
+/* === CTA / CONTATO === */
+.cta-section { padding: 96px 60px; max-width: 900px; margin: 0 auto; text-align: center; }
+.cta-section .section-label, .cta-section .section-title { text-align: center; }
+.cta-section .section-divider { margin-left: auto; margin-right: auto; }
+.cta-sub { font-size: 15px; color: var(--corpo); max-width: 520px; margin: 0 auto 40px; line-height: 1.8; }
+.cta-contacts { display: flex; justify-content: center; gap: 48px; margin-top: 56px; flex-wrap: wrap; }
+.cta-contact-item { text-align: left; }
+.cta-contact-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--terra); display: block; margin-bottom: 6px; }
+.cta-contact-value { font-size: 13px; color: var(--ebano); text-decoration: none; }
+.cta-contact-value:hover { color: var(--cobre); }
+
+/* === FOOTER === */
+footer { background: var(--ebano); padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+.footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 15px; color: var(--creme); }
+.footer-tagline { font-size: 11px; color: var(--areia); letter-spacing: 1px; }
+.footer-info { text-align: right; font-size: 10px; color: var(--terra); line-height: 1.6; }
+
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+  nav { padding: 0 24px; }
+  .nav-links { gap: 18px; }
+  .hero { grid-template-columns: 1fr; gap: 40px; padding: 100px 24px 60px; }
+  .hero-foto { justify-self: start; max-width: 300px; }
+  .section { padding: 64px 24px; }
+  .evol-inner { padding: 0 24px; }
+  .cta-section { padding: 64px 24px; }
+  .numbers { grid-template-columns: repeat(2, 1fr); }
+  .number-item { border-bottom: 0.5px solid var(--areia); }
+  .sobre-grid { grid-template-columns: 1fr; gap: 40px; }
+  .pensa-grid, .bip-grid, .comp-grid { grid-template-columns: 1fr; }
+  .case-item { padding: 32px 24px; }
+  .mjtb-strip { padding: 40px 24px; }
+  .footer { flex-direction: column; text-align: center; }
+  .footer-info { text-align: center; }
+}
+@media (max-width: 600px) {
+  .nav-links { display: none; }
+  .hero h1 { font-size: 2rem; }
+  .numbers { grid-template-columns: 1fr 1fr; }
+  .cta-contacts { flex-direction: column; gap: 24px; align-items: center; }
+  .cta-contact-item { text-align: center; }
+  .evol-list::before { left: 40px; }
+  .evol-item { grid-template-columns: 40px 1fr; gap: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+
+<body>
+
+<a href="#main" class="skip-link">Ir ao conteúdo principal</a>
+
+<!-- NAV -->
+<nav aria-label="Navegação principal">
+  <a href="#main" class="nav-brand" aria-label="Michele Miranda">
+    <span class="nome">Michele Miranda</span>
+    <span class="papel" aria-hidden="true">Builder</span>
+  </a>
+  <ul class="nav-links" role="list">
+    <li><a href="#trajetoria">Trajetória</a></li>
+    <li><a href="#cases">Cases</a></li>
+    <li><a href="#como-penso">Como penso</a></li>
+    <li><a href="#building">Building in Public</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-content">
+    <span class="hero-label">Executive Builder · AI Systems · Data Strategy</span>
+    <h1 id="hero-title">20 anos resolvendo problemas que ainda não tinham manual.</h1>
+    <div class="hero-divider" aria-hidden="true"></div>
+    <p class="hero-sub">Peguei o boom da transformação digital construindo um dos primeiros apps da Americanas e do Submarino, numa época em que ninguém sabia direito o que fazer com os dados. De lá pra cá passei por checkout, nota fiscal, CRM, Martech e CDP. Agora quero construir eu mesma, com AI, as soluções que passei 20 anos especificando para outros times.</p>
+    <div class="hero-ctas">
+      <a href="#cases" class="btn-primary">Ver cases</a>
+      <a href="#contato" class="btn-outline">Falar comigo</a>
+    </div>
+  </div>
+  <figure class="hero-foto">
+    <img src="michele.jpg" alt="Michele Miranda sorrindo, sentada em um ambiente com plantas e estante de livros ao fundo" width="900" height="1125">
+    <figcaption>Michele Miranda · São Paulo</figcaption>
+  </figure>
+</section>
+
+<!-- NUMBERS -->
+<section class="numbers" aria-label="Números de carreira">
+  <div class="number-item">
+    <span class="number-stat">+20</span>
+    <span class="number-label">Anos em tech, dados e produto</span>
+  </div>
+  <div class="number-item">
+    <span class="number-stat">3 meses</span>
+    <span class="number-label">De 12 meses para 3 — tagueamento Zé Delivery</span>
+  </div>
+  <div class="number-item">
+    <span class="number-stat">40 → 10k</span>
+    <span class="number-label">Agendamentos/mês em 6 meses — Rede D'Or</span>
+  </div>
+  <div class="number-item">
+    <span class="number-stat">3%</span>
+    <span class="number-label">Conversão de e-mail — case big data Oi</span>
+  </div>
+</section>
+
+<!-- EMPRESAS -->
+<div class="empresas" aria-label="Empresas por onde passei">
+  <div class="empresas-inner">
+    <span class="empresas-label">Por onde passei</span>
+    <span>B2W · Americanas · Submarino</span>
+    <span>Oi</span>
+    <span>Globosat</span>
+    <span>Rede D'Or</span>
+    <span>Creditas</span>
+    <span>AB InBev · Zé Delivery</span>
+  </div>
+</div>
+
+<!-- SOBRE -->
+<section class="section" id="sobre" aria-labelledby="sobre-title">
+  <span class="section-label">Quem eu sou</span>
+  <h2 class="section-title" id="sobre-title">Não fui direto ao ponto — fui identificando as brechas.</h2>
+  <div class="section-divider" aria-hidden="true"></div>
+
+  <div class="sobre-grid">
+    <div class="sobre-bio">
+      <p>Minha carreira nunca foi construída de forma linear. Comecei como desenvolvedora e analista de requisitos, na época em que o e-commerce brasileiro estava migrando do físico para o digital — participei da construção de um dos primeiros aplicativos das Americanas e do Submarino.</p>
+      <p>Fui entendendo, na prática, que faltava alguém que ligasse dado, tecnologia e negócio. Fiz estatística, depois um MBA em Marketing com projeto final em Big Data — um case real na Oi que gerou 3% de conversão num canal de e-mail que convertia muito pouco. Dali em diante, minha trajetória seguiu essa lógica: identificar o gap do momento e me formar para preenchê-lo.</p>
+      <p>Passei por Martech, CRM, CDP, governança de dados e liderança de squads multidisciplinares em empresas como B2W, Oi, Globosat, Rede D'Or, Creditas e AB InBev (Zé Delivery). Em cada uma, o padrão se repetiu: ninguém sabia ainda o que fazer com a nova camada de complexidade — e eu me posicionei para resolver isso de ponta a ponta.</p>
+      <p>Hoje vejo o mesmo padrão se repetir com AI. E dessa vez, além de desenhar a solução, quero executá-la. Saí da gestão tradicional, fundei a <strong>MJTB Labs</strong> e comecei um MBA em AI com Big Data na USP — para me tornar a pessoa que constrói, não só a que especifica.</p>
+    </div>
+
+    <div class="sobre-highlights" role="list">
+      <div class="highlight-item" role="listitem">
+        <strong>MBA em AI &amp; Big Data — USP</strong>
+        <span>Formação atual · me tornando AI Builder</span>
+      </div>
+      <div class="highlight-item" role="listitem">
+        <strong>Fundadora — MJTB Labs</strong>
+        <span>Consultoria em dados, Martech e AI · 2025–presente</span>
+      </div>
+      <div class="highlight-item" role="listitem">
+        <strong>Head of Data, Martech &amp; AI — AB InBev (Zé Delivery)</strong>
+        <span>Hub integrado de CRM, Martech, AI e Data Tracking</span>
+      </div>
+      <div class="highlight-item" role="listitem">
+        <strong>Group Product Manager — Creditas</strong>
+        <span>Construção da área de Data Products, CDP e MDM</span>
+      </div>
+      <div class="highlight-item" role="listitem">
+        <strong>MBA Marketing — USP · Estatística — Ibmec</strong>
+        <span>Base analítica que sustenta a visão holística</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVOLUÇÃO -->
+<section class="evol-section" id="trajetoria" aria-labelledby="evol-title">
+  <div class="evol-inner">
+    <span class="section-label">Como cheguei até aqui</span>
+    <h2 class="section-title" id="evol-title">Acompanhando cada onda de transformação</h2>
+    <div class="section-divider" aria-hidden="true"></div>
+
+    <div class="evol-list">
+      <div class="evol-item">
+        <span class="evol-year">2005</span>
+        <div class="evol-body">
+          <h3 class="evol-title">Primeiros produtos digitais</h3>
+          <p class="evol-desc">Construção de um dos primeiros aplicativos de e-commerce do Brasil — Americanas e Submarino migrando do físico para o digital.</p>
+        </div>
+      </div>
+      <div class="evol-item">
+        <span class="evol-year">2012</span>
+        <div class="evol-body">
+          <h3 class="evol-title">Dado como estratégia</h3>
+          <p class="evol-desc">Percepção de que ninguém sabia o que fazer com o dado gerado. Formação em estatística e MBA em Marketing com Big Data.</p>
+        </div>
+      </div>
+      <div class="evol-item">
+        <span class="evol-year">2017</span>
+        <div class="evol-body">
+          <h3 class="evol-title">CRM e personalização</h3>
+          <p class="evol-desc">Ecossistemas Oracle, motores de personalização com modelos estatísticos, réguas omnichannel — Oi e Globosat.</p>
+        </div>
+      </div>
+      <div class="evol-item">
+        <span class="evol-year">2020</span>
+        <div class="evol-body">
+          <h3 class="evol-title">Customer Data</h3>
+          <p class="evol-desc">Data Products, CDP e MDM em ambientes multi-BU — Rede D'Or e Creditas, com foco em visão única do cliente.</p>
+        </div>
+      </div>
+      <div class="evol-item">
+        <span class="evol-year">2023</span>
+        <div class="evol-body">
+          <h3 class="evol-title">AI aplicada a dados</h3>
+          <p class="evol-desc">Uso de AI para automatizar tagueamento e governança em escala — hub integrado de CRM, Martech e AI no Zé Delivery.</p>
+        </div>
+      </div>
+      <div class="evol-item">
+        <span class="evol-year">2026</span>
+        <div class="evol-body">
+          <h3 class="evol-title">Agentic AI</h3>
+          <p class="evol-desc">MBA em AI &amp; Big Data, MJTB Labs em construção, e a transição de especificar soluções para construí-las diretamente.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section class="section" id="cases" aria-labelledby="cases-title">
+  <span class="section-label">O que construí</span>
+  <h2 class="section-title" id="cases-title">Cases</h2>
+  <p class="section-intro">Quatro problemas que ninguém queria pegar, contados do jeito que aconteceram: o contexto, a decisão e o que mudou no final.</p>
+  <div class="section-divider" aria-hidden="true"></div>
+
+  <div class="cases-list">
+
+    <article class="case-item">
+      <div class="case-head">
+        <h3 class="case-title">Como reduzimos um projeto de tracking de 12 meses para 3 usando automação com AI</h3>
+        <span class="case-company">AB InBev · Zé Delivery</span>
+      </div>
+      <div class="case-grid">
+        <div class="case-col">
+          <span class="case-col-label">Problema</span>
+          <p>35 squads, mais de 200 pessoas, 3 aplicativos (Consumer, Entregador, Seller) nunca 100% tagueados. Coordenar todos os times manualmente era inviável no prazo de 1 ano.</p>
+        </div>
+        <div class="case-col">
+          <span class="case-col-label">Solução</span>
+          <p>Plugin no Figma para nascer tudo já tagueado, governança de eventos padronizada e uma AI que gerava o código de implementação nos repositórios — com validação técnica antes do merge.</p>
+        </div>
+        <div class="case-col">
+          <span class="case-col-label">Resultado</span>
+          <p>100% dos aplicativos tagueados pela primeira vez na história do produto, sem tocar no backlog de nenhuma das 35 squads.</p>
+        </div>
+      </div>
+
+      <div class="case-diagram">
+        <span class="case-col-label">Como o fluxo funcionava</span>
+        <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagrama do fluxo: Figma com plugin de eventos, template padrão de governança, AI gera o código nos repositórios, validação técnica, e os dados fluem para Segment, arquitetura de dados e ferramentas de análise">
+          <defs>
+            <marker id="seta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#A0916F" stroke-width="1.2"/>
+            </marker>
+          </defs>
+
+          <!-- etapa 1 -->
+          <text x="10" y="26" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2" fill="#7A6A4F">DO DESIGN AO CÓDIGO</text>
+
+          <g font-family="Inter, sans-serif">
+            <rect x="10" y="42" width="190" height="58" fill="#F5F0E8" stroke="#A0916F" stroke-width="0.75"/>
+            <text x="105" y="66" text-anchor="middle" font-size="13" fill="#1C1712">Figma + plugin</text>
+            <text x="105" y="84" text-anchor="middle" font-size="9.5" font-family="JetBrains Mono, monospace" fill="#7A6A4F">telas nascem tagueadas</text>
+
+            <line x1="204" y1="71" x2="226" y2="71" stroke="#A0916F" stroke-width="1" marker-end="url(#seta)"/>
+
+            <rect x="230" y="42" width="190" height="58" fill="#F5F0E8" stroke="#A0916F" stroke-width="0.75"/>
+            <text x="325" y="66" text-anchor="middle" font-size="13" fill="#1C1712">Template de eventos</text>
+            <text x="325" y="84" text-anchor="middle" font-size="9.5" font-family="JetBrains Mono, monospace" fill="#7A6A4F">governança padronizada</text>
+
+            <line x1="424" y1="71" x2="446" y2="71" stroke="#A0916F" stroke-width="1" marker-end="url(#seta)"/>
+
+            <rect x="450" y="42" width="190" height="58" fill="#1C1712" stroke="#1C1712"/>
+            <text x="545" y="66" text-anchor="middle" font-size="13" fill="#E8DFC8">AI escreve o código</text>
+            <text x="545" y="84" text-anchor="middle" font-size="9.5" font-family="JetBrains Mono, monospace" fill="#A0916F">direto nos repositórios</text>
+
+            <line x1="644" y1="71" x2="666" y2="71" stroke="#A0916F" stroke-width="1" marker-end="url(#seta)"/>
+
+            <rect x="670" y="42" width="190" height="58" fill="#F5F0E8" stroke="#A0916F" stroke-width="0.75"/>
+            <text x="765" y="66" text-anchor="middle" font-size="13" fill="#1C1712">Validação técnica</text>
+            <text x="765" y="84" text-anchor="middle" font-size="9.5" font-family="JetBrains Mono, monospace" fill="#7A6A4F">review antes do merge</text>
+          </g>
+
+          <!-- conector entre as fileiras -->
+          <path d="M 765 100 L 765 138 L 215 138 L 215 166" fill="none" stroke="#A0916F" stroke-width="1" stroke-dasharray="3 4" marker-end="url(#seta)"/>
+          <text x="490" y="132" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="1.5" fill="#7A6A4F">EVENTOS EM PRODUÇÃO</text>
+
+          <!-- etapa 2 -->
+          <g font-family="Inter, sans-serif">
+            <rect x="120" y="170" width="190" height="58" fill="#F5F0E8" stroke="#A0916F" stroke-width="0.75"/>
+            <text x="215" y="194" text-anchor="middle" font-size="13" fill="#1C1712">Segment · CDP</text>
+            <text x="215" y="212" text-anchor="middle" font-size="9.5" font-family="JetBrains Mono, monospace" fill="#7A6A4F">coleta unificada</text>
+
+            <line x1="314" y1="199" x2="336" y2="199" stroke="#A0916F" stroke-width="1" marker-end="url(#seta)"/>
+
+            <rect x="340" y="170" width="190" height="58" fill="#F5F0E8" stroke="#A0916F" stroke-width="0.75"/>
+            <text x="435" y="194" text-anchor="middle" font-size="13" fill="#1C1712">Arquitetura de dados</text>
+            <text x="435" y="212" text-anchor="middle" font-size="9.5" font-family="JetBrains Mono, monospace" fill="#7A6A4F">ingestão e armazenamento</text>
+
+            <line x1="534" y1="199" x2="556" y2="199" stroke="#A0916F" stroke-width="1" marker-end="url(#seta)"/>
+
+            <rect x="560" y="170" width="190" height="58" fill="#F5F0E8" stroke="#A0916F" stroke-width="0.75"/>
+            <text x="655" y="194" text-anchor="middle" font-size="13" fill="#1C1712">Mixpanel · Amplitude · BI</text>
+            <text x="655" y="212" text-anchor="middle" font-size="9.5" font-family="JetBrains Mono, monospace" fill="#7A6A4F">insights e modelos</text>
+          </g>
+
+          <text x="10" y="268" font-family="JetBrains Mono, monospace" font-size="10" letter-spacing="2" fill="#7A6A4F">DO DADO À DECISÃO</text>
+          <text x="10" y="288" font-family="Inter, sans-serif" font-size="10.5" fill="#5A4E3A">35 squads seguiram trabalhando normalmente — o fluxo rodava em paralelo, sem entrar em nenhum backlog.</text>
+        </svg>
+      </div>
+
+      <div class="case-result">
+        <div>
+          <span class="case-result-stat">12 → 3 meses</span>
+          <span class="case-result-label">Tempo de entrega</span>
+        </div>
+        <div>
+          <span class="case-result-stat">0</span>
+          <span class="case-result-label">Squads impactadas no backlog</span>
+        </div>
+        <div>
+          <span class="case-result-stat">100%</span>
+          <span class="case-result-label">Cobertura de eventos</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="case-item">
+      <div class="case-head">
+        <h3 class="case-title">Como aumentei o agendamento de exames de 40 para 10.000 por mês</h3>
+        <span class="case-company">Rede D'Or São Luiz</span>
+      </div>
+      <div class="case-grid">
+        <div class="case-col">
+          <span class="case-col-label">Problema</span>
+          <p>No início da pandemia, implementei teleconsulta e assumi o agendamento de exames — que rodava a apenas 40 agendamentos por mês, travado por falhas de integração de backend.</p>
+        </div>
+        <div class="case-col">
+          <span class="case-col-label">Solução</span>
+          <p>Mapeamento e correção das integrações entre os sistemas de agendamento, priorizando os pontos de maior atrito — sem grande investimento adicional em desenvolvimento.</p>
+        </div>
+        <div class="case-col">
+          <span class="case-col-label">Resultado</span>
+          <p>O gargalo era arquitetural, não de demanda. Corrigida a integração, o volume represado veio à tona rapidamente.</p>
+        </div>
+      </div>
+      <div class="case-result">
+        <div>
+          <span class="case-result-stat">250x</span>
+          <span class="case-result-label">Crescimento em 6 meses</span>
+        </div>
+        <div>
+          <span class="case-result-stat">6 meses</span>
+          <span class="case-result-label">De 40 para 10.000/mês</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="case-item">
+      <div class="case-head">
+        <h3 class="case-title">Como um case de Big Data gerou 3% de conversão num canal que convertia quase nada</h3>
+        <span class="case-company">Oi S.A.</span>
+      </div>
+      <div class="case-grid">
+        <div class="case-col">
+          <span class="case-col-label">Problema</span>
+          <p>Grande parte da base pré-paga não tinha conta — e, portanto, não estava dentro da base de clientes ativos. E-mail era um canal historicamente fraco para conversão.</p>
+        </div>
+        <div class="case-col">
+          <span class="case-col-label">Solução</span>
+          <p>Estudo da base pré-paga, criação de um recorte de oportunidade e desenvolvimento de um novo produto com novo valor, testado via modelo de ciência de dados aplicado à base.</p>
+        </div>
+        <div class="case-col">
+          <span class="case-col-label">Resultado</span>
+          <p>Projeto final do MBA em Marketing — data science aplicada a negócio antes do termo virar hype no mercado brasileiro.</p>
+        </div>
+      </div>
+      <div class="case-result">
+        <div>
+          <span class="case-result-stat">3%</span>
+          <span class="case-result-label">Conversão em canal de e-mail</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="case-item">
+      <div class="case-head">
+        <h3 class="case-title">Como construí uma área de Data Products do zero em ambiente multi-BU</h3>
+        <span class="case-company">Creditas</span>
+      </div>
+      <div class="case-grid">
+        <div class="case-col">
+          <span class="case-col-label">Problema</span>
+          <p>Múltiplas unidades de negócio, dados fragmentados, sem MDM nem visão consolidada do cliente para orientar CRM e analytics.</p>
+        </div>
+        <div class="case-col">
+          <span class="case-col-label">Solução</span>
+          <p>Implementação de Segment.io e Amplitude, construção de MDM, data layer e pipelines via API, com modelos de propensão alimentando automação de CRM.</p>
+        </div>
+        <div class="case-col">
+          <span class="case-col-label">Resultado</span>
+          <p>Fundação de dados que passou a sustentar decisões de produto e marketing em todas as BUs, não apenas em uma vertical isolada.</p>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- COMO PENSO -->
+<section class="section" id="como-penso" aria-labelledby="pensa-title">
+  <span class="section-label">Como penso</span>
+  <h2 class="section-title" id="pensa-title">Alguns princípios que guiam meu trabalho</h2>
+  <div class="pensa-list">
+    <div class="pensa-row">
+      <p class="pensa-quote">Na época do boom de dados, todo mundo armazenava tudo e ninguém sabia o que fazer com nada. Com AI está acontecendo de novo.</p>
+      <p class="pensa-desc">Os dados eram guardados sem necessidade, ou guardados errado. Eu me formei para ser a pessoa que liga dado, tecnologia e negócio — e é exatamente esse gap que vejo se repetir agora, com todo mundo correndo para usar AI sem estruturar a base que a sustenta.</p>
+    </div>
+    <div class="pensa-row">
+      <p class="pensa-quote">AI não resolve problema de arquitetura.</p>
+      <p class="pensa-desc">Modelo bom em cima de dado mal estruturado só escala o erro mais rápido. Agente precisa de dado normalizado para reaprender e gerar inteligência de verdade. A disciplina de engenharia de dados que aprendi nos últimos 20 anos é pré-requisito, não detalhe.</p>
+    </div>
+    <div class="pensa-row">
+      <p class="pensa-quote">O gargalo quase nunca está onde todo mundo está olhando.</p>
+      <p class="pensa-desc">Na Rede D'Or, o agendamento travado não era falta de demanda — era integração de backend quebrada. No Zé, o tagueamento impossível não era falta de gente — era falta de processo. Entender o problema de ponta a ponta vale mais do que qualquer ferramenta.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BUILDING IN PUBLIC -->
+<section class="bip-section" id="building" aria-labelledby="bip-title">
+  <div class="section">
+    <span class="section-label">O que estou construindo agora</span>
+    <h2 class="section-title" id="bip-title">Building in Public</h2>
+    <p class="section-intro">A transição de especificar soluções para construí-las. Documentado à medida que acontece.</p>
+    <div class="bip-grid">
+      <div class="bip-card">
+        <span class="bip-status ativo">Em andamento</span>
+        <h3 class="bip-card-title">MBA em AI &amp; Big Data — USP</h3>
+        <p class="bip-card-desc">Formação estruturada para consolidar a base técnica de AI aplicada, complementando 20 anos de experiência em dados e produto.</p>
+      </div>
+      <div class="bip-card">
+        <span class="bip-status ativo">Em andamento</span>
+        <h3 class="bip-card-title">MJTB Labs</h3>
+        <p class="bip-card-desc">Consultoria própria como espaço de prática — projetos reais de dados, automação (RPA) e AI para clientes, aplicando o que estou aprendendo.</p>
+        <a href="#mjtb" class="bip-card-link">Conhecer a MJTB Labs →</a>
+      </div>
+      <div class="bip-card disabled">
+        <span class="bip-status">Em breve</span>
+        <h3 class="bip-card-title">GitHub &amp; experimentos técnicos</h3>
+        <p class="bip-card-desc">Protótipos de automação, agentes e arquiteturas de AI aplicada a dados — publicados à medida que saem do papel.</p>
+      </div>
+      <div class="bip-card disabled">
+        <span class="bip-status">Em breve</span>
+        <h3 class="bip-card-title">Artigos &amp; reflexões</h3>
+        <p class="bip-card-desc">Textos sobre dados, arquitetura de AI e a transição de gestão para construção — desenvolvidos a partir da prática no dia a dia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MJTB STRIP -->
+<div class="mjtb-strip" id="mjtb">
+  <div class="mjtb-strip-inner">
+    <div class="mjtb-strip-text">
+      <span class="mjtb-strip-label">Onde tudo isso vira prática</span>
+      <h3 class="mjtb-strip-title">MJTB Labs</h3>
+      <p class="mjtb-strip-desc">A consultoria que fundei para aplicar, com clientes reais, tudo o que está descrito acima — dados, Martech, automação e AI. "Do dado à decisão."</p>
+    </div>
+    <a href="mailto:michele@mjtblabs.com.br" class="btn-outline">Falar sobre um projeto</a>
+  </div>
+</div>
+
+<!-- COMPETÊNCIAS -->
+<section class="comp-section" id="competencias" aria-labelledby="comp-title">
+  <div class="section" style="padding-top: 96px; padding-bottom: 96px;">
+    <span class="section-label">Expertise</span>
+    <h2 class="section-title" id="comp-title">Competências</h2>
+    <div class="comp-grid">
+      <div class="comp-group">
+        <span class="comp-group-title">Plataformas &amp; Stack</span>
+        <ul class="comp-list" role="list">
+          <li>CDP — Segment, mParticle, Tealium</li>
+          <li>CRM & Automation — Braze, Responsys, Oracle MKT Cloud</li>
+          <li>Analytics — GA4, GTM, Amplitude, Mixpanel, Databricks</li>
+          <li>Cloud — AWS, Azure, BigQuery</li>
+          <li>Data Tracking — AppsFlyer, Firebase, data layer</li>
+        </ul>
+      </div>
+      <div class="comp-group">
+        <span class="comp-group-title">Disciplinas</span>
+        <ul class="comp-list" role="list">
+          <li>Martech Strategy & Stack Design</li>
+          <li>Data Engineering — ETL, API, Cloud</li>
+          <li>Machine Learning & GenAI aplicados</li>
+          <li>MDM — Master Data Management</li>
+          <li>Data Governance & Taxonomias</li>
+        </ul>
+      </div>
+      <div class="comp-group">
+        <span class="comp-group-title">AI Builder</span>
+        <ul class="comp-list" role="list">
+          <li>Prompt Engineering aplicado a produto</li>
+          <li>Automação de processos com AI (RPA + LLM)</li>
+          <li>Arquitetura de agentes — em formação</li>
+          <li>MCP e integração de ferramentas — em formação</li>
+        </ul>
+      </div>
+      <div class="comp-group">
+        <span class="comp-group-title">Formação</span>
+        <ul class="comp-list" role="list">
+          <li>MBA AI & Big Data — USP (em andamento)</li>
+          <li>MBA Marketing — Universidade de São Paulo</li>
+          <li>Especialização Estatística — Ibmec</li>
+          <li>Certificação Oracle Responsys & Maxymiser</li>
+          <li>Mixpanel Product Analytics Certification</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / CONTATO -->
+<section class="cta-section" id="contato" aria-labelledby="contato-title">
+  <span class="section-label">Vamos conversar</span>
+  <h2 class="section-title" id="contato-title">Me conta o seu problema difícil.</h2>
+  <div class="section-divider" aria-hidden="true"></div>
+  <p class="cta-sub">Se você está travado em algo de dados, produto ou AI que ainda não tem manual, provavelmente é o tipo de problema que eu gosto de pegar.</p>
+
+  <div class="hero-ctas" style="justify-content: center;">
+    <a href="mailto:michele@mjtblabs.com.br" class="btn-primary">Enviar e-mail</a>
+    <a href="https://www.linkedin.com/in/michele-mirandas-silveira/" target="_blank" rel="noopener noreferrer" class="btn-outline">LinkedIn</a>
+  </div>
+
+  <div class="cta-contacts">
+    <div class="cta-contact-item">
+      <span class="cta-contact-label">E-mail</span>
+      <a href="mailto:michele@mjtblabs.com.br" class="cta-contact-value">michele@mjtblabs.com.br</a>
+    </div>
+    <div class="cta-contact-item">
+      <span class="cta-contact-label">Telefone</span>
+      <a href="tel:+5521983850916" class="cta-contact-value">(21) 98385-0916</a>
+    </div>
+    <div class="cta-contact-item">
+      <span class="cta-contact-label">LinkedIn</span>
+      <a href="https://www.linkedin.com/in/michele-mirandas-silveira/" target="_blank" rel="noopener noreferrer" class="cta-contact-value">linkedin.com/in/michele-mirandas-silveira</a>
+    </div>
+    <div class="cta-contact-item">
+      <span class="cta-contact-label">Localização</span>
+      <span class="cta-contact-value">São Paulo & Rio de Janeiro · Brasil</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Michele Miranda</div>
+  <div style="text-align: center;">
+    <span class="footer-tagline">do dado à decisão.</span>
+  </div>
+  <div class="footer-info">
+    <div>MJTB Labs · CNPJ 66.142.488/0001-08</div>
+    <div>Michele Miranda da Silveira Consultoria em TI Ltda</div>
+  </div>
+</footer>
+
+</body>
+</html>

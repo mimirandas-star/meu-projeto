@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preview Hero — Michele Miranda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --preto: #101010;
+  --offwhite: #F7F7F7;
+  --cinza: #7C7C7C;
+  --card: #ECECEC;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--offwhite);
+  color: var(--preto);
+  font-family: 'Space Mono', monospace;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ===== NAV ===== */
+.topnav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 28px 40px 0;
+}
+.nav-brand {
+  font-family: 'Anton', sans-serif;
+  font-size: 24px; line-height: 0.95; letter-spacing: 0.01em;
+  text-transform: uppercase; color: var(--preto); text-decoration: none;
+}
+.nav-links {
+  display: flex; gap: 56px; list-style: none;
+  flex: 1; justify-content: center;
+}
+.nav-links a {
+  font-family: 'Space Mono', monospace;
+  font-size: 15px; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--preto); text-decoration: none;
+  white-space: nowrap;
+}
+.nav-links a:hover { opacity: 0.55; }
+.nav-contact {
+  font-family: 'Space Mono', monospace;
+  font-size: 16px; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--preto);
+  text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1.5px;
+  white-space: nowrap;
+}
+.nav-contact:hover { opacity: 0.55; }
+.nav-contact .seta { text-decoration: none; display: inline-block; margin-left: 4px; }
+
+/* ===== COUNTER ===== */
+.counter {
+  padding: 56px 40px 0;
+  font-size: 15px; font-weight: 700; letter-spacing: 0.02em;
+}
+
+/* ===== TÍTULO GIGANTE ===== */
+.hero-title {
+  font-family: 'Anton', sans-serif;
+  font-weight: 400;
+  font-size: 13.2vw;
+  line-height: 0.92;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  text-align: center;
+  white-space: nowrap;
+  padding: 4px 8px 0;
+}
+
+/* ===== LINHA "BASED IN" ===== */
+.hero-based {
+  text-align: right;
+  padding: 6px 40px 0;
+  font-size: 15px; font-weight: 700;
+  letter-spacing: 0.9em;
+  text-transform: uppercase;
+}
+
+/* ===== BLOCO FOTO + CARD ===== */
+.hero-stage {
+  position: relative;
+  max-width: 1180px;
+  margin: -6.5vw auto 0;
+  padding: 0 40px;
+}
+.hero-card {
+  background: var(--card);
+  margin-left: 8%;
+  margin-right: 16%;
+  min-height: 380px;
+  margin-top: 8vw;
+  position: relative;
+}
+.hero-foto {
+  position: absolute;
+  left: 50%; transform: translateX(-50%);
+  bottom: 24px;
+  width: min(390px, 38vw);
+  z-index: 2;
+}
+.hero-foto img {
+  display: block; width: 100%; height: auto;
+  filter: grayscale(1) contrast(1.05);
+}
+.hero-services {
+  position: absolute;
+  left: 4%; bottom: 28px;
+  list-style: none;
+  z-index: 3;
+}
+.hero-services li {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(20px, 2.3vw, 28px);
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+.hero-services li::before { content: "/ "; }
+
+/* ===== PARÁGRAFO MONO ===== */
+.hero-intro {
+  max-width: 480px;
+  margin: 56px auto 80px;
+  padding: 0 24px;
+  font-size: 15px; line-height: 1.7;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 900px) {
+  .topnav { padding: 20px 20px 0; flex-wrap: wrap; gap: 12px; }
+  .nav-links { display: none; }
+  .counter { padding: 32px 20px 0; }
+  .hero-title { font-size: 15.5vw; white-space: normal; line-height: 0.95; }
+  .hero-based { padding: 8px 20px 0; letter-spacing: 0.5em; font-size: 12px; }
+  .hero-stage { padding: 0 20px; margin-top: 0; }
+  .hero-card { margin: 32px 0 0; min-height: 0; padding: 24px 20px 140px; }
+  .hero-foto { position: static; transform: none; width: 100%; max-width: 320px; margin: 0 auto; }
+  .hero-services { position: static; margin-top: 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav" aria-label="Navegação principal">
+  <a href="#" class="nav-brand">Michele<br>Miranda</a>
+  <ul class="nav-links" role="list">
+    <li><a href="#trajetoria">[ Trajetória ]</a></li>
+    <li><a href="#cases">[ Cases ]</a></li>
+    <li><a href="#como-penso">[ Como penso ]</a></li>
+    <li><a href="#building">[ Building ]</a></li>
+  </ul>
+  <a href="#contato" class="nav-contact">Contato <span class="seta">↗</span></a>
+</nav>
+
+<div class="counter">+20</div>
+
+<h1 class="hero-title">Executive Builder</h1>
+
+<div class="hero-based" aria-label="Dados, Martech e AI">Dados · Martech · AI</div>
+
+<div class="hero-stage">
+  <div class="hero-card">
+    <ul class="hero-services" role="list">
+      <li>Dados &amp; Martech</li>
+      <li>Arquitetura de AI</li>
+      <li>Estratégia &amp; Produto</li>
+    </ul>
+    <figure class="hero-foto">
+      <img src="michele.jpg" alt="Michele Miranda sorrindo, retrato em preto e branco" width="900" height="1125">
+    </figure>
+  </div>
+</div>
+
+<p class="hero-intro">Há 20 anos resolvo problemas complexos que ainda não tinham manual — de e-commerce a dados, CRM, Martech e agora AI.</p>
+
+</body>
+</html>
